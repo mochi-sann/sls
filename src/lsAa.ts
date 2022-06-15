@@ -1,5 +1,5 @@
 /// this AA copy from https://github.com/mtoyoda/sl/blob/master/sl.h
-const SlAciiArt = {
+export const SlAciiArt = {
   slTop: [
     "      ====        ________                ___________ ",
     "  _D _|  |_______/        \\__I_I_____===__|_________| ",
