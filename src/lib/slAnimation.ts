@@ -1,14 +1,20 @@
 import { SlAciiArt } from "../slAa.ts";
-export const SlAnimation = () => {
-  SlAciiArt.wheel.map((value) => {
+import { ReadDirFile } from "./ReadDir.ts";
 
-    SlAciiArt.slTop.map((value) => {
-      console.log(value);
+export const SlAnimation = async () => {
+  const CoalWagon: string[] = SlAciiArt.coalWagon;
+  SlAciiArt.wheel.map((value, wheelKey) => {
+    // drawing sl upper side
+    SlAciiArt.slTop.map((value, slTopkey) => {
+      console.log(value + CoalWagon[slTopkey]);
     });
-    value.map((value1) => {
-      console.log(value1);
+
+    // drawing sl wheel side
+    value.map((value1, slWheelKey) => {
+      console.log(value1 + CoalWagon[slWheelKey + 7]);
     });
-    console.log("\n \n");
+    console.log("\n\n");
   });
+  console.log(await ReadDirFile());
 };
 SlAnimation();
