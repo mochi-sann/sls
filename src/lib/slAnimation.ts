@@ -1,11 +1,10 @@
 import { SlAciiArt } from "../slAa.ts";
-import { ReadDirFile } from "./ReadDir.ts";
 
-export const SlAnimation = (dir?: string): string[] => {
+export const SlAnimation = (): string[] => {
   const ReaturnValue: string[] = [];
   const CoalWagon: string[] = SlAciiArt.coalWagon;
   // wheel の種類ごとに描画する
-  SlAciiArt.wheel.map((value, wheelKey) => {
+  SlAciiArt.wheel.map((value) => {
     // drawing sl upper side
     SlAciiArt.slTop.map((value, slTopkey) => {
       // console.log(value + CoalWagon[slTopkey]);
@@ -21,4 +20,3 @@ export const SlAnimation = (dir?: string): string[] => {
   // console.log(await ReadDirFile());
   return ReaturnValue;
 };
-console.log("slAnimation", SlAnimation());
