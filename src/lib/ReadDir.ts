@@ -1,4 +1,4 @@
-export const ReadDirFile = async (dir?: string) => {
+export const ReadDirFile = async (dir?: string): Promise<Deno.DirEntry[]> => {
   const fileNames: Deno.DirEntry[] = [];
   try {
     for await (const dirEntry of Deno.readDir(dir || ".")) {
