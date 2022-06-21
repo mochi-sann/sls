@@ -1,14 +1,11 @@
 import { SlAciiArt } from "./slAa.ts";
 type SlAnimationType = {
-  files: Deno.DirEntry[];
+  files: string[];
 };
 export const SlAnimation = (props: SlAnimationType): string[] => {
   const ReaturnValue: string[] = [];
   const CoalWagon: string[] = SlAciiArt.coalWagon;
-  const Filelist = props.files;
-  const files = Filelist.map((file) => {
-    return file.name;
-  });
+  const files = props.files;
   SlAciiArt.wheel.map((value) => {
     // drawing sl upper side
     SlAciiArt.slTop.map((value, slTopkey) => {
