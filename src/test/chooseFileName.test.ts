@@ -1,6 +1,5 @@
 import { ChooesFileName } from "../lib/chooseFileName.ts";
-import { assertEquals } from "../../mod.ts";
-
+import { assertEquals } from "../../deps.ts";
 Deno.test({
   name: "convert Deno.DirEntry => string[]",
   fn() {
