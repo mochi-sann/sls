@@ -4,12 +4,12 @@ export type SplitArryPropsType = {
 };
 
 const SplitArry = (props: SplitArryPropsType): string[][] => {
-  const returnValue: string[][] = [[]];
-  let doneKey = 0;
-  props.arry.map((value, key) => {
-    console.log(value);
-  });
-  return returnValue;
+  const arrList = [];
+  const idx = 0;
+  while (idx < props.arry.length) {
+    arrList.push(props.arry.splice(idx, idx + props.dividedOfNumber));
+  }
+  return arrList;
 };
 
 export { SplitArry };
