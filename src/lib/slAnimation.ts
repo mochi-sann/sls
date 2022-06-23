@@ -1,11 +1,12 @@
 import { SlAciiArt } from "./slAa.ts";
+import { SplitArry } from "./spilitArry.ts";
 type SlAnimationType = {
   files: string[];
 };
 export const SlAnimation = (props: SlAnimationType): string[] => {
   const ReaturnValue: string[] = [];
   const CoalWagon: string[] = SlAciiArt.coalWagon;
-  const files = props.files;
+  const files = SplitArry({ arry: props.files, dividedOfNumber: 6 });
   SlAciiArt.wheel.map((value) => {
     // drawing sl upper side
     SlAciiArt.slTop.map((value, slTopkey) => {
@@ -20,8 +21,10 @@ export const SlAnimation = (props: SlAnimationType): string[] => {
     });
   });
 
-  files.map((value, key) => {
-    ReaturnValue[key] = ReaturnValue[key] + "   " + value;
+  files.map((value) => {
+    value.map((value2, key2) => {
+      ReaturnValue[key2] = ReaturnValue[key2] + "   " + value2;
+    });
   });
 
   // console.log(await ReadDirFile());
