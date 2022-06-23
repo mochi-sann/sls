@@ -21,6 +21,9 @@ export const SlAnimation = (props: SlAnimationType): string[] => {
     });
   });
 
+  SlAciiArt.cargo.wogon.map((value, key) => {
+    ReaturnValue[key] = ReaturnValue[key] + value;
+  });
   files.map((value) => {
     value.map((value2, key2) => {
       ReaturnValue[key2] = ReaturnValue[key2] + "   " + value2;
