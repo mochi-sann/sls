@@ -2,24 +2,26 @@ import { SlAciiArt } from "./slAa.ts";
 import { SplitArry } from "./spilitArry.ts";
 type SlAnimationType = {
   files: string[];
+  slAnimationNumber?: number;
 };
+
 export const SlAnimation = (props: SlAnimationType): string[] => {
   const ReaturnValue: string[] = [];
   const CoalWagon: string[] = SlAciiArt.coalWagon;
   const files = SplitArry({ arry: props.files, dividedOfNumber: 6 });
-  SlAciiArt.wheel.map((value) => {
-    // drawing sl upper side
-    SlAciiArt.slTop.map((value, slTopkey) => {
-      // console.log(value + CoalWagon[slTopkey]);
-      ReaturnValue[slTopkey] = value + CoalWagon[slTopkey];
-    });
+  const WheelNumber: number = props.slAnimationNumber || 0;
 
-    // drawing sl wheel side
-    value.map((value1, slWheelKey) => {
+  SlAciiArt.slTop.map((value, slTopkey) => {
+    // console.log(value + CoalWagon[slTopkey]);
+    ReaturnValue[slTopkey] = value + CoalWagon[slTopkey];
+  });
+
+  SlAciiArt.wheel[WheelNumber % SlAciiArt.wheel.length].map(
+    (value1, slWheelKey) => {
       // console.log(value1 + CoalWagon[slWheelKey + 7]);
       ReaturnValue[slWheelKey + 7] = value1 + CoalWagon[slWheelKey + 7];
-    });
-  });
+    },
+  );
 
   SlAciiArt.cargo.wogon.map((value, key) => {
     ReaturnValue[key] = ReaturnValue[key] + value;
