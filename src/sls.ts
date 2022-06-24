@@ -4,19 +4,20 @@ import { ChooesFileName } from "./lib/chooseFileName.ts";
 import { sleep } from "../deps.ts";
 async function sls() {
   const fileList = await ReadDirFile();
-  console.clear();
+
   let hoge = 0;
   while (true) {
     const Sl = SlAnimation({
       files: ChooesFileName(fileList),
       slAnimationNumber: hoge,
     });
-    Sl.map((value) => {
-      console.log(value);
-    });
-
-    await sleep(0.3);
     console.clear();
+
+    const SlAnimationText = Sl.join("\n");
+    console.log("hoge", hoge);
+    console.log(SlAnimationText);
+
+    await sleep(0.1);
     hoge++;
   }
 }
