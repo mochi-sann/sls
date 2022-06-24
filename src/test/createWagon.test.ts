@@ -24,7 +24,7 @@ Deno.test({
   // ...（その他のオプション）
 });
 Deno.test({
-  name: "wagon with 5 fils",
+  name: "wagon with 10 fils",
   fn() {
     const wagon = CreateWagon({
       files: [
@@ -43,14 +43,48 @@ Deno.test({
     const fileInWagon = [
       "                            ",
       "____________________________",
-      "| file1 file6                   |",
-      "| file2 file7                |",
-      "| file3 file8                  |",
-      "| file4 file9                  |",
-      "| file5 file10                  |",
+      "| file1 file6              |",
+      "| file2 file7              |",
+      "| file3 file8              |",
+      "| file4 file9              |",
+      "| file5 file10             |",
       "|__________________________|",
       "  |_D__D__D_|  |_D__D__D_|  ",
       "   \\_/   \\_/    \\_/   \\_/   ",
+    ];
+    assertEquals(wagon, fileInWagon);
+    /* <test_code> */
+  },
+  // ...（その他のオプション）
+});
+Deno.test({
+  name: "wagon with 10 fils and long file name",
+  fn() {
+    const wagon = CreateWagon({
+      files: [
+        "file1",
+        "file2",
+        "file3",
+        "file4",
+        "file5file5file5file5file5file5file5file5",
+        "file6",
+        "file7",
+        "file8",
+        "file9",
+        "file10",
+      ],
+    });
+    const fileInWagon = [
+      "                                                   ",
+      "___________________________________________________",
+      "| file1 file6                                     |",
+      "| file2 file7                                     |",
+      "| file3 file8                                     |",
+      "| file4 file9                                     |",
+      "| file5file5file5file5file5file5file5file5 file10 |",
+      "|_________________________________________________|",
+      "  |_D__D__D_|                         |_D__D__D_|  ",
+      "   \\_/   \\_/                           \\_/   \\_/   ",
     ];
     assertEquals(wagon, fileInWagon);
     /* <test_code> */
