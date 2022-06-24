@@ -56,6 +56,14 @@ export const SlAciiArt = {
   ],
   coalSpace: ["                              "],
   cargo: {
+    top: "_",
+    LeftAndRigntWall: "|",
+    wheel: [
+      "|_D__D__D_|",
+      " \\_/   \\_/",
+    ],
+    minContentWidth: 26,
+    maxContentHeigt: 5,
     wogon: [
       "                            ",
       "____________________________",
