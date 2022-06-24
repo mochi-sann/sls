@@ -1,14 +1,23 @@
 import { SlAnimation } from "./lib/slAnimation.ts";
 import { ReadDirFile } from "./lib/ReadDir.ts";
 import { ChooesFileName } from "./lib/chooseFileName.ts";
+import { sleep } from "../deps.ts";
 async function sls() {
   const fileList = await ReadDirFile();
-  for (let i = 0; i < 100; i++) {
+  console.clear();
+  let hoge = 0;
+  while (true) {
     const Sl = SlAnimation({
       files: ChooesFileName(fileList),
-      slAnimationNumber: i,
+      slAnimationNumber: hoge,
     });
-    Sl.map((value) => console.log(value));
+    Sl.map((value) => {
+      console.log(value);
+    });
+
+    await sleep(0.3);
+    console.clear();
+    hoge++;
   }
 }
 
