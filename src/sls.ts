@@ -5,20 +5,19 @@ import { sleep } from "../deps.ts";
 async function sls() {
   const fileList = await ReadDirFile();
 
-  let hoge = 0;
+  let frame = 0;
   while (true) {
     const Sl = SlAnimation({
       files: ChooesFileName(fileList),
-      slAnimationNumber: hoge,
+      slAnimationNumber: frame,
     });
     console.clear();
 
     const SlAnimationText = Sl.join("\n");
-    console.log("hoge", hoge);
+    console.log("frame", frame);
     console.log(SlAnimationText);
-
-    await sleep(0.1);
-    hoge++;
+    await sleep(1 / 12);
+    frame++;
   }
 }
 
