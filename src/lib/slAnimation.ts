@@ -1,5 +1,6 @@
 import { SlAciiArt } from "./slAa.ts";
 import { SplitArry } from "./spilitArry.ts";
+import { FileFormat } from "./fileFormat.ts";
 type SlAnimationType = {
   files: string[];
   slAnimationNumber?: number;
@@ -8,10 +9,11 @@ type SlAnimationType = {
 export const SlAnimation = (props: SlAnimationType): string[] => {
   const ReaturnValue: string[] = [];
   const CoalWagon: string[] = SlAciiArt.coalWagon;
-  const files = SplitArry({
-    arry: props.files,
-    dividedOfNumber: SlAciiArt.cargo.maxContentHeigt,
+  const files = FileFormat({
+    files: props.files,
+    MaxRow: SlAciiArt.cargo.maxContentHeigt,
   });
+
   const WheelNumber: number = (props.slAnimationNumber || 0) %
     SlAciiArt.wheel.length;
 
@@ -33,10 +35,8 @@ export const SlAnimation = (props: SlAnimationType): string[] => {
     ReaturnValue[key] = ReaturnValue[key] + value;
   });
   // render wagon
-  files.map((value) => {
-    value.map((value2, key2) => {
-      ReaturnValue[key2] = ReaturnValue[key2] + "   " + value2;
-    });
+  files.map((value, key) => {
+    ReaturnValue[key] = ReaturnValue[key] + "   " + value;
   });
 
   // console.log(await ReadDirFile());
