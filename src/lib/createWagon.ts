@@ -1,4 +1,3 @@
-import { SplitArry } from "./spilitArry.ts";
 import { stringWidth } from "../../deps.ts";
 import { FileFormat } from "./fileFormat.ts";
 import { SlAciiArt } from "./slAa.ts";
@@ -12,14 +11,14 @@ export const CreateWagon = (props: CreateWagonPropsType): string[] => {
     MaxRow: cargo.maxContentHeigt,
   });
   const ReturnValue: string[] = [
-    cargo.wogon[0],
-    cargo.wogon[1],
+    "",
+    "",
     cargo.LeftAndRigntWall,
     cargo.LeftAndRigntWall,
     cargo.LeftAndRigntWall,
     cargo.LeftAndRigntWall,
     cargo.LeftAndRigntWall,
-    cargo.wogon[7],
+    "",
     cargo.wogon[8],
     cargo.wogon[9],
   ];
@@ -43,5 +42,19 @@ export const CreateWagon = (props: CreateWagonPropsType): string[] => {
   addSpavefileNames.map((fileRow, key) => {
     ReturnValue[key + 2] = fileRow + "|";
   });
+  const WheelWidhtContentDiff = stringWidth(ReturnValue[2]) -
+    stringWidth(cargo.wogon[8]);
+  ReturnValue[0] = " ".repeat(
+    stringWidth(ReturnValue[2]),
+  );
+  ReturnValue[1] = cargo.top.repeat(stringWidth(ReturnValue[2]));
+  ReturnValue[7] = cargo.LeftAndRigntWall +
+    cargo.floor.repeat(stringWidth(ReturnValue[2]) - 2) +
+    cargo.LeftAndRigntWall;
+  ReturnValue[8] = "  " + cargo.wheel[0] +
+    " ".repeat(WheelWidhtContentDiff + 2) + cargo.wheel[0] + "  ";
+
+  ReturnValue[9] = "  " + cargo.wheel[1] +
+    " ".repeat(WheelWidhtContentDiff + 3) + cargo.wheel[1] + "   ";
   return ReturnValue;
 };
