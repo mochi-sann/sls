@@ -40,5 +40,16 @@ export const FileFormat = (props: FileFormatTypes): string[] => {
         : file + " ";
     });
   });
-  return ReturnValue;
+  const ReturnValueMaxLenght = ReturnValue.reduce(
+    (acc, current) => Math.max(stringWidth(current), acc),
+    0,
+  );
+  return ReturnValue.map((value) => {
+    if (stringWidth(value) < ReturnValueMaxLenght) {
+      const StringWidthDiff: number = ReturnValueMaxLenght - stringWidth(value);
+      return value + " ".repeat(StringWidthDiff);
+    } else {
+      return value;
+    }
+  });
 };

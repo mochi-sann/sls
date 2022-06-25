@@ -23,6 +23,45 @@ Deno.test("format file names 1", () => {
   ];
   assertEquals(FileFormat({ files: files, MaxRow: 5 }), Result);
 });
+Deno.test("format file names 7", () => {
+  const files = [
+    "hello1",
+    "fileeeeeeeeeeeeeeeeeee",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+  ];
+  const Result = [
+    "hello1                 6 ",
+    "fileeeeeeeeeeeeeeeeeee 7 ",
+    "3                        ",
+    "4                        ",
+    "5                        ",
+  ];
+  assertEquals(FileFormat({ files: files, MaxRow: 5 }), Result);
+});
+Deno.test("format file names 1", () => {
+  const files = [
+    ".DS_Store",
+    "2q-af",
+    "fresh-deno-app",
+    "marp-test",
+    "mochi-slidev",
+    "nuxt-app",
+    "nuxt3app-2",
+    "sls",
+  ];
+  const Result = [
+    ".DS_Store      nuxt-app   ",
+    "2q-af          nuxt3app-2 ",
+    "fresh-deno-app sls        ",
+    "marp-test                 ",
+    "mochi-slidev              ",
+  ];
+  assertEquals(FileFormat({ files: files, MaxRow: 5 }), Result);
+});
 Deno.test("format file names 2", () => {
   const files = [
     "hello1",
