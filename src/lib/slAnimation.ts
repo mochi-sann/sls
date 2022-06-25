@@ -1,6 +1,4 @@
 import { SlAciiArt } from "./slAa.ts";
-import { SplitArrs } from "./spilitArry.ts";
-import { FileFormat } from "./fileFormat.ts";
 import { CreateWagon } from "./createWagon.ts";
 type SlAnimationType = {
   files: string[];
