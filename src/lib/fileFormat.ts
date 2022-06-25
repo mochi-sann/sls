@@ -2,6 +2,7 @@ import { SplitArry } from "../lib/spilitArry.ts";
 import { stringWidth } from "../../deps.ts";
 
 type FileFormatTypes = { files: string[]; MaxRow: number };
+
 export const FileFormat = (props: FileFormatTypes): string[] => {
   const ReturnValue: string[] = [];
   const FileSplit = SplitArry({
