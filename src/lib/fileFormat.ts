@@ -9,11 +9,13 @@ export const FileFormat = (props: FileFormatTypes): string[] => {
     dividedOfNumber: props.MaxRow,
   });
   const FormatFilelistArry = FileSplit.map((files: string[]) => {
+    // 一番長いファイル名を取得
     const MaxLength = files.reduce(
       (acc, current) => Math.max(stringWidth(current), acc),
       0,
     );
     const FormatFiles = files.map((value) => {
+      // 一番長いファイル名より短ければファイル名のあとにspaceを追加する
       if (stringWidth(value) < MaxLength) {
         const StringWidthDiff: number = MaxLength - stringWidth(value);
         return value + " ".repeat(StringWidthDiff);
@@ -23,7 +25,7 @@ export const FileFormat = (props: FileFormatTypes): string[] => {
     });
     return FormatFiles;
   });
-
+  // ファイル名を結合して返す
   FormatFilelistArry.map((files) => {
     files.map((file, fileKey) => {
       ReturnValue[fileKey] = ReturnValue[fileKey]
