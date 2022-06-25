@@ -40,7 +40,7 @@ Deno.test("format file names 2", () => {
     "hello1                 6                                ",
     "fileeeeeeeeeeeeeeeeeee 7                                ",
     "3                      8aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa ",
-    "4                      helloworl                                ",
+    "4                      helloworld                       ",
     "5                      10                               ",
   ];
   assertEquals(FileFormat({ files: files, MaxRow: 5 }), Result);
