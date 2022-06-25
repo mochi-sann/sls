@@ -1,5 +1,5 @@
 import { SlAciiArt } from "./slAa.ts";
-import { SplitArry } from "./spilitArry.ts";
+import { SplitArrs } from "./spilitArry.ts";
 import { FileFormat } from "./fileFormat.ts";
 import { CreateWagon } from "./createWagon.ts";
 type SlAnimationType = {
