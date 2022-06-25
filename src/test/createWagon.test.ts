@@ -24,6 +24,38 @@ Deno.test({
   // ...（その他のオプション）
 });
 Deno.test({
+  name: "wagon with 5 fils",
+  fn() {
+    const wagon = CreateWagon({
+      files: [
+        ".DS_Store",
+        "2q-af",
+        "fresh-deno-app",
+        "marp-test",
+        "mochi-slidev",
+        "nuxt-app",
+        "nuxt3app-2",
+        "sls",
+      ],
+    });
+    const fileInWagon = [
+      "                             ",
+      "_____________________________",
+      "| .DS_Store      nuxt-app   |",
+      "| 2q-af          nuxt3app-2 |",
+      "| fresh-deno-app sls        |",
+      "| marp-test                 |",
+      "| mochi-slidev              |",
+      "|___________________________|",
+      "  |_D__D__D_|   |_D__D__D_|  ",
+      "   \\_/   \\_/     \\_/   \\_/   ",
+    ];
+    assertEquals(wagon, fileInWagon);
+    /* <test_code> */
+  },
+  // ...（その他のオプション）
+});
+Deno.test({
   name: "wagon with 10 fils",
   fn() {
     const wagon = CreateWagon({
