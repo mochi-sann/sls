@@ -23,5 +23,8 @@ const getLines = async (): Promise<number> => {
   const output = new TextDecoder().decode(await process.output());
   return Number(output);
 };
-
-export { getColumns, getLines };
+const GetEmptyFullScren = (collums: number, lines: number): string[] => {
+  const EmptyFullScren: string[] = Array(lines).fill(" ".repeat(collums));
+  return EmptyFullScren;
+};
+export { getColumns, GetEmptyFullScren, getLines };
