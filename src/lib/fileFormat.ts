@@ -4,9 +4,15 @@ import { stringWidth } from "../../deps.ts";
 type FileFormatTypes = { files: string[]; MaxRow: number };
 
 export const FileFormat = (props: FileFormatTypes): string[] => {
+  const files = props.files;
+  if (files.length < 5) {
+    for (let i = files.length; i < 5; i++) {
+      files.push(" ");
+    }
+  }
   const ReturnValue: string[] = [];
   const FileSplit = SplitArry({
-    arry: props.files,
+    arry: files,
     dividedOfNumber: props.MaxRow,
   });
   const FormatFilelistArry = FileSplit.map((files: string[]) => {
