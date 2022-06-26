@@ -4,7 +4,7 @@ import { ChooesFileName } from "./lib/chooseFileName.ts";
 import { sleep } from "../deps.ts";
 import { getColumns, GetEmptyFullScren, getLines } from "./lib/process.ts";
 import { DrewSlScreen } from "./lib/screen.ts";
-
+import { IsAllSpace } from "./lib/IsAllSpace.ts";
 async function sls(dir: string) {
   const fileList = await ReadDirFile(dir);
   let frame = 0;
@@ -32,6 +32,9 @@ async function sls(dir: string) {
     console.log(SlAnimationText);
     if (frame != 0) {
       await sleep(1 / 25);
+    }
+    if (IsAllSpace(SlAnimationText)) {
+      break;
     }
     frame++;
   }
