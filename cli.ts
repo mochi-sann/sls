@@ -3,7 +3,7 @@ import { Command } from "./deps.ts";
 const { options, args } = await new Command()
   .name("sls")
   .arguments("[dir]")
-  .option("-s, --speed <speed>", "set Sl speed", {
+  .option("-s, --speed <number>", "set Sl speed", {
     default: 30,
   })
   .description("show filelist with sl")
