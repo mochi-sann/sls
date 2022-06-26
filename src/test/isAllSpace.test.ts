@@ -13,7 +13,7 @@ Deno.test("IS Empty text", () => {
 
   assertEquals(IsAllSpace(text), true);
 });
-Deno.test("IS Empty text", () => {
+Deno.test("IS not Empty text", () => {
   const text = `                      
                       
                       
