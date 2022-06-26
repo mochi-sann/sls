@@ -8,14 +8,22 @@ type DrewSlScreenType = {
 
 export const DrewSlScreen = (props: DrewSlScreenType): string[] => {
   const res = props.backgroundtexts;
+  const Fream = props.fream || 0;
+  let slText = [...props.slText];
   const slSize = {
-    height: props.slText.length,
-    width: stringWidth(props.slText[0]),
+    height: slText.length,
+    width: stringWidth(slText[0]),
   };
   const backgroundTextSize = {
     height: props.backgroundtexts.length,
     width: stringWidth(props.backgroundtexts[0]),
   };
+  if (backgroundTextSize.width < Fream) {
+    const sliceWidht = Fream - backgroundTextSize.width;
+    slText = slText.map((value) => {
+      return value.slice(sliceWidht);
+    });
+  }
   const backgroundTextMid = {
     lineMid: Math.floor(backgroundTextSize.height / 2),
 
@@ -28,7 +36,7 @@ export const DrewSlScreen = (props: DrewSlScreenType): string[] => {
 
     res[Y] = replaceAt({
       BaseText: res[Y],
-      replaceText: props.slText[i],
+      replaceText: slText[i],
       index: props.fream ? backgroundTextSize.width - props.fream : X,
     });
   }

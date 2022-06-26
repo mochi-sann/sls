@@ -24,22 +24,13 @@ async function sls(dir: string) {
     const AnSL = DrewSlScreen({
       slText: Sl,
       backgroundtexts: EmptyFullScren,
-      lines: Windowsize.lines,
-      collums: Windowsize.collums,
+      fream: frame,
     });
-    console.clear();
 
     const SlAnimationText = AnSL.join("\n");
-    console.log(
-      "frame",
-      frame,
-      "collums",
-      Windowsize.collums,
-      "lines",
-      Windowsize.lines,
-    );
+    console.clear();
     console.log(SlAnimationText);
-    await sleep(1 / 12);
+    await sleep(1 / 15);
     frame++;
   }
 }

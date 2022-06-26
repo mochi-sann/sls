@@ -6,7 +6,6 @@ type replaceAtPropsType = {
 export const replaceAt = (
   props: replaceAtPropsType,
 ) => {
-  console.log(props.BaseText);
   return (
     ((props.BaseText || "").substring(0, props.index) || "") +
     props.replaceText +
