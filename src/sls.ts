@@ -30,7 +30,9 @@ async function sls(dir: string) {
     const SlAnimationText = AnSL.join("\n");
     console.clear();
     console.log(SlAnimationText);
-    await sleep(1 / 15);
+    if (frame != 0) {
+      await sleep(1 / 25);
+    }
     frame++;
   }
 }
