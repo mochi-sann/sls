@@ -3,6 +3,7 @@ import { replaceAt } from "./replaceAt.ts";
 type DrewSlScreenType = {
   backgroundtexts: string[];
   slText: string[];
+  fream?: number;
 };
 
 export const DrewSlScreen = (props: DrewSlScreenType): string[] => {
@@ -24,11 +25,21 @@ export const DrewSlScreen = (props: DrewSlScreenType): string[] => {
     const Y = Math.floor(backgroundTextMid.lineMid - slSize.height / 2) + i;
 
     const X = Math.floor(backgroundTextMid.ClummsMid - slSize.width / 2);
+
     res[Y] = replaceAt({
       BaseText: res[Y],
       replaceText: props.slText[i],
-      index: X,
+      index: props.fream ? backgroundTextSize.width - props.fream : X,
     });
   }
-  return res;
+  const ReturnValue = res.map((value, key) => {
+    if (
+      stringWidth(value) > backgroundTextSize.width
+    ) {
+      return value.substring(0, backgroundTextSize.width);
+    } else {
+      return value;
+    }
+  });
+  return ReturnValue;
 };
