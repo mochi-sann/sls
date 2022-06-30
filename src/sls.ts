@@ -1,44 +1,40 @@
 import { SlAnimation } from "./lib/slAnimation.ts";
-import { ReadDirFile } from "./lib/ReadDir.ts";
-import { ChooesFileName } from "./lib/chooseFileName.ts";
-import { sleep } from "../deps.ts";
-import { getColumns, GetEmptyFullScren, getLines } from "./lib/process.ts";
+import { GetEmptyFullScren } from "./lib/process.ts";
 import { DrewSlScreen } from "./lib/screen.ts";
 import { IsAllSpace } from "./lib/IsAllSpace.ts";
 
-async function sls(dir: string, speed: number) {
-  const fileList = await ReadDirFile(dir);
-  let frame = 0;
-  while (true) {
-    const Windowsize = {
-      collums: await getColumns(),
-      lines: await getLines(),
-    };
-    const EmptyFullScren = GetEmptyFullScren(
-      Windowsize.collums,
-      Windowsize.lines,
-    );
-    const Sl = SlAnimation({
-      files: ChooesFileName(fileList),
-      slAnimationNumber: frame,
-    });
-    const AnSL = DrewSlScreen({
-      slText: Sl,
-      backgroundtexts: EmptyFullScren,
-      fream: frame,
-    });
+type DreawSlsType = {
+  Windowsize: {
+    lines: number;
+    collums: number;
+  };
+  files: string[];
+  frame: number;
+};
+type DreawSlsReturnType = { slText: string; isShowSl: boolean };
 
-    const SlAnimationText = AnSL.join("\n");
-    console.clear();
-    console.log(SlAnimationText);
-    if (frame != 0) {
-      await sleep(1 / speed);
-    }
-    if (IsAllSpace(SlAnimationText)) {
-      break;
-    }
-    frame++;
-  }
-}
+const DreawSLs = (args: DreawSlsType): DreawSlsReturnType => {
+  const { files, frame } = args;
+  const Windowsize = {
+    collums: args.Windowsize.collums,
+    lines: args.Windowsize.lines,
+  };
+  const EmptyFullScren = GetEmptyFullScren(
+    Windowsize.collums,
+    Windowsize.lines,
+  );
+  const Sl = SlAnimation({
+    files: files,
+    slAnimationNumber: frame,
+  });
+  const AnSL = DrewSlScreen({
+    slText: Sl,
+    backgroundtexts: EmptyFullScren,
+    fream: frame,
+  });
 
-export { sls };
+  const SlAnimationText = AnSL.join("\n");
+  return { slText: SlAnimationText, isShowSl: IsAllSpace(SlAnimationText) };
+};
+export type { DreawSlsReturnType, DreawSlsType };
+export { DreawSLs };
