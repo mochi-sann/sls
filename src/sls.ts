@@ -34,7 +34,7 @@ const DreawSLs = (args: DreawSlsType): DreawSlsReturnType => {
   });
 
   const SlAnimationText = AnSL.join("\n");
-  return { slText: SlAnimationText, isShowSl: IsAllSpace(SlAnimationText) };
+  return { slText: SlAnimationText, isShowSl: !IsAllSpace(SlAnimationText) };
 };
 export type { DreawSlsReturnType, DreawSlsType };
 export { DreawSLs };
