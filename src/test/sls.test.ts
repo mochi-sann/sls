@@ -28,7 +28,7 @@ Deno.test("Is Show SL 2", () => {
 Deno.test("Is not Show SL ", () => {
   const DrewSlsProps: DreawSlsType = {
     files: ["file1", "file2", "file3", "file4"],
-    frame: 1090,
+    frame: 212,
     Windowsize: {
       lines: 30,
       collums: 100,

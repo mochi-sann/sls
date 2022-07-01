@@ -24,7 +24,7 @@ const DreawSLs = (args: DreawSlsType): DreawSlsReturnType => {
     Windowsize.lines,
   );
   const Sl = SlAnimation({
-    files: files,
+    files: args.files,
     slAnimationNumber: frame,
   });
   const AnSL = DrewSlScreen({
