@@ -16,15 +16,15 @@ const { options, args } = await new Command()
 const Speed: number = options.speed;
 
 const main = async () => {
-  const Windowsize = {
-    lines: await getLines(),
-    collums: await getColumns(),
-  };
   let frames: number = 0;
   const Dir: string = args[0] || ".";
   const Dirfiles = await ReadDirFile(Dir);
   while (true) {
     const files = Dirfiles.map((value) => value.name);
+    const Windowsize = {
+      lines: await getLines(),
+      collums: await getColumns(),
+    };
     const Sl = DreawSLs({
       files: files,
       frame: frames,
