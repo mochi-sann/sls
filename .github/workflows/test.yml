@@ -12,7 +12,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [macOS-latest, windows-latest, ubuntu-latest]
+        os: [ubuntu-latest]
         deno: [v1.x]
 
     steps:
