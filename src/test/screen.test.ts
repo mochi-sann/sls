@@ -7,6 +7,7 @@ Deno.test("Drew SL on screen center", () => {
   const Text = DrewSlScreen({
     backgroundtexts: backgroundtexts,
     slText: ["hello", "world"],
+    reverse: false,
   });
   const Result = [
     "                    ",
@@ -28,6 +29,7 @@ Deno.test("Drew SL on 1 freame", () => {
     backgroundtexts: backgroundtexts,
     slText: ["hello", "world"],
     fream: 1,
+    reverse: false,
   });
   const Result = [
     "                    ",
@@ -49,6 +51,7 @@ Deno.test("Drew SL on 2 freame", () => {
     backgroundtexts: backgroundtexts,
     slText: ["hello", "world"],
     fream: 2,
+    reverse: false,
   });
   const Result = [
     "                    ",
@@ -70,6 +73,7 @@ Deno.test("Drew SL on 3 freame", () => {
     backgroundtexts: backgroundtexts,
     slText: ["hello", "world"],
     fream: 3,
+    reverse: false,
   });
   const Result = [
     "                    ",
@@ -91,6 +95,7 @@ Deno.test("Drew SL on 4 freame", () => {
     backgroundtexts: backgroundtexts,
     slText: ["hello", "world"],
     fream: 4,
+    reverse: false,
   });
   const Result = [
     "                    ",
@@ -111,6 +116,7 @@ Deno.test("Drew SL on 5 freame", () => {
   const Text = DrewSlScreen({
     backgroundtexts: backgroundtexts,
     slText: ["hello", "world"],
+    reverse: false,
     fream: 5,
   });
   const Result = [
@@ -133,6 +139,7 @@ Deno.test("Drew SL on 10 freame", () => {
     backgroundtexts: backgroundtexts,
     slText: ["hello", "world"],
     fream: 10,
+    reverse: false,
   });
   const Result = [
     "                    ",
@@ -148,12 +155,36 @@ Deno.test("Drew SL on 10 freame", () => {
   ];
   assertEquals(Text, Result);
 });
+
+Deno.test("reverse : Drew SL on 10 freame", () => {
+  const backgroundtexts = GetEmptyFullScren(20, 10);
+  const Text = DrewSlScreen({
+    backgroundtexts: backgroundtexts,
+    slText: ["hello", "world"],
+    fream: 10,
+    reverse: true,
+  });
+  const Result = [
+    "                    ",
+    "                    ",
+    "                    ",
+    "                    ",
+    "          olleh     ",
+    "          dlrow     ",
+    "                    ",
+    "                    ",
+    "                    ",
+    "                    ",
+  ];
+  assertEquals(Text, Result);
+});
 Deno.test("Drew SL on 20 freame", () => {
   const backgroundtexts = GetEmptyFullScren(20, 10);
   const Text = DrewSlScreen({
     backgroundtexts: backgroundtexts,
     slText: ["hello", "world"],
     fream: 20,
+    reverse: false,
   });
   const Result = [
     "                    ",
@@ -175,6 +206,7 @@ Deno.test("Drew SL on 21 freame", () => {
     backgroundtexts: backgroundtexts,
     slText: ["hello", "world"],
     fream: 21,
+    reverse: false,
   });
   const Result = [
     "                    ",
@@ -196,6 +228,7 @@ Deno.test("Drew SL on 23 freame", () => {
     backgroundtexts: backgroundtexts,
     slText: ["hello", "world"],
     fream: 23,
+    reverse: false,
   });
   const Result = [
     "                    ",
@@ -217,6 +250,7 @@ Deno.test("Drew SL on 25 freame", () => {
     backgroundtexts: backgroundtexts,
     slText: ["hello", "world"],
     fream: 25,
+    reverse: false,
   });
   const Result = [
     "                    ",

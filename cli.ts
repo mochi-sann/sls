@@ -8,12 +8,14 @@ const { options, args } = await new Command()
   .option("-s, --speed <number>", "set Sl speed", {
     default: 30,
   })
+  .option("-r, --reverse", "reverse Sl ")
   .option("-l --loop ", "loop sl")
   .description("show filelist with sl")
   .version("1.1.1")
   .parse(Deno.args);
 
 const Speed: number = options.speed;
+const reverse: boolean = options.reverse || false;
 
 const main = async () => {
   let frames: number = 0;
@@ -29,6 +31,7 @@ const main = async () => {
       files: files,
       frame: frames,
       Windowsize: Windowsize,
+      reverse: reverse,
     });
     console.clear();
     // console.log({ hoge: Dirfiles.map((value) => value.name), Dirfiles });

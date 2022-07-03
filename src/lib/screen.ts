@@ -4,12 +4,22 @@ type DrewSlScreenType = {
   backgroundtexts: string[];
   slText: string[];
   fream?: number;
+  reverse: boolean;
 };
 
 export const DrewSlScreen = (props: DrewSlScreenType): string[] => {
   const res = props.backgroundtexts;
   const Fream = props.fream || 0;
   let slText = [...props.slText];
+  if (props.reverse) {
+    slText = slText.map((text) => text.split("").reverse().join(""));
+    slText = slText.map((text) => {
+      return text.replaceAll("/", ":think:").replaceAll("\\", "/").replaceAll(
+        ":think:",
+        "\\",
+      );
+    });
+  }
   const slSize = {
     height: slText.length,
     width: stringWidth(slText[0]),

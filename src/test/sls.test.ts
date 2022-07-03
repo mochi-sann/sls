@@ -9,6 +9,7 @@ Deno.test("Is Show SL", () => {
       lines: 30,
       collums: 100,
     },
+    reverse: false,
   };
   const sl = DreawSLs(DrewSlsProps);
   assertEquals(sl.isShowSl, true);
@@ -21,6 +22,7 @@ Deno.test("Is Show SL 2", () => {
       lines: 30,
       collums: 100,
     },
+    reverse: false,
   };
   const sl = DreawSLs(DrewSlsProps);
   assertEquals(sl.isShowSl, true);
@@ -33,6 +35,7 @@ Deno.test("Is not Show SL ", () => {
       lines: 30,
       collums: 100,
     },
+    reverse: false,
   };
   const sl = DreawSLs(DrewSlsProps);
   assertEquals(sl.isShowSl, false);

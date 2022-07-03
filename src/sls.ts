@@ -10,11 +10,12 @@ type DreawSlsType = {
   };
   files: string[];
   frame: number;
+  reverse: boolean;
 };
 type DreawSlsReturnType = { slText: string; isShowSl: boolean };
 
 const DreawSLs = (args: DreawSlsType): DreawSlsReturnType => {
-  const { files, frame } = args;
+  const { files, frame, reverse } = args;
   const Windowsize = {
     collums: args.Windowsize.collums,
     lines: args.Windowsize.lines,
@@ -31,6 +32,7 @@ const DreawSLs = (args: DreawSlsType): DreawSlsReturnType => {
     slText: Sl,
     backgroundtexts: EmptyFullScren,
     fream: frame,
+    reverse: reverse,
   });
 
   const SlAnimationText = AnSL.join("\n");
