@@ -1,5 +1,6 @@
 import { stringWidth } from "../../deps.ts";
 import { replaceAt } from "./replaceAt.ts";
+import { ReverseText } from "./reverseText.ts";
 type DrewSlScreenType = {
   backgroundtexts: string[];
   slText: string[];
@@ -14,10 +15,7 @@ export const DrewSlScreen = (props: DrewSlScreenType): string[] => {
   if (props.reverse) {
     slText = slText.map((text) => text.split("").reverse().join(""));
     slText = slText.map((text) => {
-      return text.replaceAll("/", ":think:").replaceAll("\\", "/").replaceAll(
-        ":think:",
-        "\\",
-      );
+      return ReverseText(text);
     });
   }
   const slSize = {
