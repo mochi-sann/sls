@@ -12,16 +12,22 @@ const invokeLinesProcess = () => {
   });
 };
 
-const getColumns = async (): Promise<number> => {
-  const process = invokeColumnsProcess();
-  const output = new TextDecoder().decode(await process.output());
-  return Number(output);
+const getColumns = (): number => {
+  const { columns }: { columns: number; rows: number } = Deno
+    .consoleSize(
+      Deno.stdout.rid,
+    );
+
+  return columns;
 };
 
-const getLines = async (): Promise<number> => {
-  const process = invokeLinesProcess();
-  const output = new TextDecoder().decode(await process.output());
-  return Number(output);
+const getLines = (): number => {
+  const { rows }: { columns: number; rows: number } = Deno
+    .consoleSize(
+      Deno.stdout.rid,
+    );
+
+  return rows;
 };
 const GetEmptyFullScren = (collums: number, lines: number): string[] => {
   const EmptyFullScren: string[] = Array(lines).fill(" ".repeat(collums));
