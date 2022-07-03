@@ -27,6 +27,3 @@ Application Opitions:
   -l, --loop               Make the SL display loop
 ```
 
-## options
-```shell 
-```
