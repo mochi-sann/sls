@@ -50,7 +50,7 @@ export const DrewSlScreen = (props: DrewSlScreenType): string[] => {
       index: props.fream ? backgroundTextSize.width - props.fream : X,
     });
   }
-  let ReturnValue = res.map((value, key) => {
+  const ReturnValue = res.map((value, key) => {
     if (
       stringWidth(value) > backgroundTextSize.width
     ) {
