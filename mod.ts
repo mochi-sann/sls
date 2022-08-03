@@ -1,1 +1,1 @@
-export * from "./src/sls.ts";
+export { DreawSLs } from "./src/sls.ts";

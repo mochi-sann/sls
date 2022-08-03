@@ -34,4 +34,5 @@ cli/tests/.test_coverage/
 # WPT generated cert files
 /tools/wpt/certs/index.txt*
 /tools/wpt/certs/serial*
+npm/
 
