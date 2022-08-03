@@ -4,8 +4,16 @@ import { build, emptyDir } from "https://deno.land/x/dnt@0.28.0/mod.ts";
 await emptyDir("./npm");
 
 await build({
-  entryPoints: ["./mod.ts"],
+  entryPoints: [
+    { path: "./mod.ts", kind: "export", name: "DrewSls" },
+    {
+      kind: "bin",
+      name: "sls", // command name
+      path: "./cli.ts",
+    },
+  ],
   outDir: "./npm",
+
   shims: {
     // see JS docs for overview and more options
     deno: true,
