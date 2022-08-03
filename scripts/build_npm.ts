@@ -22,7 +22,7 @@ await build({
     // package.json properties
     name: "sls",
     version: Deno.args[0],
-    description: "hoge",
+    description: "This is the npm version of the sls command",
     license: "MIT",
     repository: {
       type: "git",
