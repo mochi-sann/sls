@@ -5,7 +5,7 @@ await emptyDir("./npm");
 
 await build({
   entryPoints: [
-    { path: "./mod.ts", kind: "export", name: "DrewSls" },
+    { path: "./mod.ts", kind: "export", name: "sls" },
     {
       kind: "bin",
       name: "sls", // command name
