@@ -16,7 +16,7 @@ type DreawSlsType = {
 };
 type DreawSlsReturnType = { slText: string; isShowSl: boolean };
 
-const DreawSL = (args: DreawSlsType): DreawSlsReturnType => {
+const DreawSLs = (args: DreawSlsType): DreawSlsReturnType => {
   const { files, frame, reverse, ForwardBackwardReversal } = args;
   const Windowsize = {
     collums: args.Windowsize.collums,
@@ -46,4 +46,4 @@ const DreawSL = (args: DreawSlsType): DreawSlsReturnType => {
   return { slText: SlAnimationText, isShowSl: !IsAllSpace(SlAnimationText) };
 };
 export type { DreawSlsReturnType, DreawSlsType };
-export { DreawSL };
+export { DreawSLs };
