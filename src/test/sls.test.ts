@@ -1,5 +1,5 @@
 import { assertEquals } from "../../deps.ts";
-import { DreawSL, DreawSlsType } from "../sls.ts";
+import { DreawSLs, DreawSlsType } from "../sls.ts";
 
 Deno.test("Is Show SL", () => {
   const DrewSlProps: DreawSlsType = {
@@ -12,7 +12,7 @@ Deno.test("Is Show SL", () => {
     reverse: false,
     ForwardBackwardReversal: false,
   };
-  const sl = DreawSL(DrewSlProps);
+  const sl = DreawSLs(DrewSlProps);
   assertEquals(sl.isShowSl, true);
 });
 Deno.test("Is Show SL 2", () => {
@@ -26,7 +26,7 @@ Deno.test("Is Show SL 2", () => {
     reverse: false,
     ForwardBackwardReversal: false,
   };
-  const sl = DreawSL(DrewSlProps);
+  const sl = DreawSLs(DrewSlProps);
   assertEquals(sl.isShowSl, true);
 });
 Deno.test("Is not Show SL ", () => {
@@ -40,6 +40,6 @@ Deno.test("Is not Show SL ", () => {
     reverse: false,
     ForwardBackwardReversal: false,
   };
-  const sl = DreawSL(DrewSlProps);
+  const sl = DreawSLs(DrewSlProps);
   assertEquals(sl.isShowSl, false);
 });

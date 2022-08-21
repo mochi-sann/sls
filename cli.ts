@@ -1,4 +1,4 @@
-import { DreawSL } from "./src/sls.ts";
+import { DreawSLs } from "./src/sls.ts";
 import { ReadDirFile } from "./src/lib/ReadDir.ts";
 import { getColumns, getLines } from "./src/lib/process.ts";
 import { Command, sleep } from "./deps.ts";
@@ -29,7 +29,7 @@ const main = async () => {
       lines: await getLines(),
       collums: await getColumns(),
     };
-    const Sl = DreawSL({
+    const Sl = DreawSLs({
       files: files,
       frame: frames,
       Windowsize: Windowsize,
