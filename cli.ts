@@ -1,4 +1,4 @@
-import { DreawSLs } from "./src/sls.ts";
+import { DreawSL } from "./src/sls.ts";
 import { ReadDirFile } from "./src/lib/ReadDir.ts";
 import { getColumns, getLines } from "./src/lib/process.ts";
 import { Command, sleep } from "./deps.ts";
@@ -10,12 +10,14 @@ const { options, args } = await new Command()
   })
   .option("-r, --reverse", "reverse Sl ")
   .option("-l --loop ", "loop sl")
+  .option("--startFromLeft ", "sl start from Left")
   .description("show filelist with sl")
   .version("1.1.1")
   .parse(Deno.args);
 
 const Speed: number = options.speed;
 const reverse: boolean = options.reverse || false;
+const StartFromLeft: boolean = options.startFromLeft || false;
 
 const main = async () => {
   let frames: number = 0;
@@ -27,11 +29,12 @@ const main = async () => {
       lines: await getLines(),
       collums: await getColumns(),
     };
-    const Sl = DreawSLs({
+    const Sl = DreawSL({
       files: files,
       frame: frames,
       Windowsize: Windowsize,
       reverse: reverse,
+      ForwardBackwardReversal: StartFromLeft,
     });
     console.clear();
     // console.log({ hoge: Dirfiles.map((value) => value.name), Dirfiles });
