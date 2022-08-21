@@ -22,8 +22,8 @@ Help Options:
   sls --help
 
 Application Opitions:
-  -r, --reverse            Reverse the direction of the SL 
+  -r, --reverse            Reverse the direction of the SL
   -s, --speed=<number>     Specify SL speed (default : 30)
   -l, --loop               Make the SL display loop
+  --startFromLeft          SL will appear from the left side
 ```
-
