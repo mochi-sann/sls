@@ -6,10 +6,15 @@ type SlAnimationType = {
 };
 
 export const SlAnimation = (props: SlAnimationType): string[] => {
+  const SmokeFreameSwitchNumber = 6; // smokeを何フレームごとに切り替えるかの数
   const ReturnValue: string[] = [];
   const CoalWagon: string[] = SlAciiArt.coalWagon;
   const Cargo = CreateWagon({ files: props.files });
+  const SmakeNumber: number = (props.slAnimationNumber || 0) %
+    (SlAciiArt.smoke.length * SmokeFreameSwitchNumber);
 
+  const Smaoke =
+    SlAciiArt.smoke[Math.floor(SmakeNumber / SmokeFreameSwitchNumber)];
   const WheelNumber: number = (props.slAnimationNumber || 0) %
     SlAciiArt.wheel.length;
 
@@ -32,5 +37,5 @@ export const SlAnimation = (props: SlAnimationType): string[] => {
   });
 
   // console.log(await ReadDirFile());
-  return ReturnValue;
+  return Smaoke.concat(ReturnValue);
 };
