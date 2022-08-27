@@ -4,6 +4,9 @@
     "lib": ["deno.window"],
     "strict": true
   },
+  "tasks": {
+    "dev": "deno run --allow-read --allow-run cli.ts"
+  },
   "lint": {
     "files": {
       "include": ["src/"],
@@ -28,4 +31,3 @@
     }
   }
 }
-
