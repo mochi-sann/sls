@@ -5,7 +5,7 @@
 
 ls results are displayed in the SL
 
-https://user-images.githubusercontent.com/44772513/175798454-3253bf60-a04e-4ab2-99a4-eba22e2ee227.mov
+[![asciicast](https://asciinema.org/a/bs7b3eiVOz8ciOFIcr4O51o3M.svg)](https://asciinema.org/a/bs7b3eiVOz8ciOFIcr4O51o3M)
 
 ## Usage
 
