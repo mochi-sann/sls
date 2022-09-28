@@ -15,7 +15,7 @@ const { options, args } = await new Command()
   .version("1.1.1")
   .parse(Deno.args);
 
-const Speed: number = options.speed;
+const Speed: number = Number(options.speed);
 const reverse: boolean = options.reverse || false;
 const StartFromLeft: boolean = options.startFromLeft || false;
 
@@ -37,9 +37,9 @@ const main = async () => {
       ForwardBackwardReversal: StartFromLeft,
     });
     console.clear();
-    // console.log({ hoge: Dirfiles.map((value) => value.name), Dirfiles });
+
     frames > 0 && console.log(Sl.slText);
-    // console.log(Sl.slText);
+
     await sleep(1 / Speed);
     if (!Sl.isShowSl && options.loop) {
       frames = 0;
