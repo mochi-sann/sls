@@ -8,8 +8,7 @@ type replaceAtPropsType = {
 export const replaceAt = (
   props: replaceAtPropsType,
 ) => {
-  const BaseWidth = stringWidth(props.BaseText);
-  let NewText = (
+  const NewText = (
     ((props.BaseText || "").substring(0, props.index) || "") +
     props.replaceText +
     ((props.BaseText || "").substring(
