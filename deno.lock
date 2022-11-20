@@ -162,5 +162,34 @@
     "https://esm.sh/v99/string-width@5.1.2/deno/string-width.js": "0e24c26acc6afcd44d97b50d4b2cfe02d01f8bc867ddffbd4b5a6df2731101e2",
     "https://esm.sh/v99/string-width@5.1.2/index.d.ts": "9e90c4797f14d5ad3349b1a9588d3b1c4da5e76a24f96724af5013388c3d237b",
     "https://esm.sh/v99/strip-ansi@7.0.1/deno/strip-ansi.js": "a1e9232daa1f820196262d19de31e930292f005268bbbaea444a7706dd82b380"
+  },
+  "npm": {
+    "specifiers": { "string-width": "string-width@5.1.2" },
+    "packages": {
+      "ansi-regex@6.0.1": {
+        "integrity": "sha512-n5M855fKb2SsfMIiFFoVrABHJC8QtHwVx+mHWP3QcEqBHYienj5dHSgjbxtC0WEZXYt4wcD6zrQElDPhFuZgfA==",
+        "dependencies": {}
+      },
+      "eastasianwidth@0.2.0": {
+        "integrity": "sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==",
+        "dependencies": {}
+      },
+      "emoji-regex@9.2.2": {
+        "integrity": "sha512-L18DaJsXSUk2+42pv8mLs5jJT2hqFkFE4j21wOmgbUqsZ2hL72NsUU785g9RXgo3s0ZNgVl42TiHp3ZtOv/Vyg==",
+        "dependencies": {}
+      },
+      "string-width@5.1.2": {
+        "integrity": "sha512-HnLOCR3vjcY8beoNLtcjZ5/nxn2afmME6lhrDrebokqMap+XbeW8n9TXpPDOqdGK5qcI3oT0GKTW6wC7EMiVqA==",
+        "dependencies": {
+          "eastasianwidth": "eastasianwidth@0.2.0",
+          "emoji-regex": "emoji-regex@9.2.2",
+          "strip-ansi": "strip-ansi@7.0.1"
+        }
+      },
+      "strip-ansi@7.0.1": {
+        "integrity": "sha512-cXNxvT8dFNRVfhVME3JAe98mkXDYN2O1l7jmcwMnOslDeESg1rF/OZMtK0nRAhiari1unG5cD4jG3rapUAkLbw==",
+        "dependencies": { "ansi-regex": "ansi-regex@6.0.1" }
+      }
+    }
   }
 }

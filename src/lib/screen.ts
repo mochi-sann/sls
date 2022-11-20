@@ -49,9 +49,7 @@ export const DrewSlScreen = (props: DrewSlScreenType): string[] => {
     });
   }
   const ReturnValue = res.map((value, key) => {
-    if (
-      stringWidth(value) > backgroundTextSize.width
-    ) {
+    if (stringWidth(value) > backgroundTextSize.width) {
       return value.substring(0, backgroundTextSize.width);
     } else {
       return value;

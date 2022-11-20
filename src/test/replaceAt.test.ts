@@ -37,3 +37,16 @@ Deno.test("Replace Text Japanese", () => {
   const Result = "Hello world ,こん is my World";
   assertEquals(Replace, Result);
 });
+
+Deno.test("Replace Text Japanese2", () => {
+  const baseText = "Hello world";
+  const replaceText = "こん";
+  const index = 10;
+  const Replace = replaceAt({
+    BaseText: baseText,
+    index: index,
+    replaceText: replaceText,
+  });
+  const Result = "Hello worlこん";
+  assertEquals(Replace, Result);
+});

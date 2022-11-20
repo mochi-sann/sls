@@ -1,0 +1,5 @@
+{
+  "imports": {
+    "string-width": "npm:string-width"
+  }
+}
