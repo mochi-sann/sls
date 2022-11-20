@@ -1,3 +1,5 @@
+import stringWidth from "string-width";
+
 type replaceAtPropsType = {
   BaseText: string;
   index: number;
@@ -6,10 +8,13 @@ type replaceAtPropsType = {
 export const replaceAt = (
   props: replaceAtPropsType,
 ) => {
-  return (
+  const NewText = (
     ((props.BaseText || "").substring(0, props.index) || "") +
     props.replaceText +
-    ((props.BaseText || "").substring(props.index + props.replaceText.length) ||
+    ((props.BaseText || "").substring(
+      props.index + stringWidth(props.replaceText),
+    ) ||
       "")
   );
+  return NewText;
 };

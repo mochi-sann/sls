@@ -1,6 +1,29 @@
 import { assertEquals } from "../../deps.ts";
 import { CreateWagon } from "../lib/createWagon.ts";
 Deno.test({
+  name: "wagon with 5 fils Japanese",
+  fn() {
+    const wagon = CreateWagon({
+      files: ["file1", "file2", "file3", "file4", "ああ5"],
+    });
+    const fileInWagon = [
+      "                            ",
+      "____________________________",
+      "| file1                    |",
+      "| file2                    |",
+      "| file3                    |",
+      "| file4                    |",
+      "| ああ5                    |",
+      "|__________________________|",
+      "  |_D__D__D_|  |_D__D__D_|  ",
+      "   \\_/   \\_/    \\_/   \\_/   ",
+    ];
+    assertEquals(wagon, fileInWagon);
+    /* <test_code> */
+  },
+  // ...（その他のオプション）
+});
+Deno.test({
   name: "wagon with 5 fils",
   fn() {
     const wagon = CreateWagon({
@@ -24,7 +47,39 @@ Deno.test({
   // ...（その他のオプション）
 });
 Deno.test({
-  name: "wagon with 5 fils",
+  name: "wagon with 8 fils wit Japanese",
+  fn() {
+    const wagon = CreateWagon({
+      files: [
+        ".DS_Store",
+        "2q-af",
+        "fresh-deno-app",
+        "marp-test",
+        "mochi-slidev",
+        "こんにちはー",
+        "ああああaa",
+        "sls",
+      ],
+    });
+    const fileInWagon = [
+      "                               ",
+      "_______________________________",
+      "| .DS_Store      こんにちはー |",
+      "| 2q-af          ああああaa   |",
+      "| fresh-deno-app sls          |",
+      "| marp-test                   |",
+      "| mochi-slidev                |",
+      "|_____________________________|",
+      "  |_D__D__D_|     |_D__D__D_|  ",
+      "   \\_/   \\_/       \\_/   \\_/   ",
+    ];
+    assertEquals(wagon, fileInWagon);
+    /* <test_code> */
+  },
+  // ...（その他のオプション）
+});
+Deno.test({
+  name: "wagon with 8 fils",
   fn() {
     const wagon = CreateWagon({
       files: [

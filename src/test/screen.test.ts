@@ -23,6 +23,49 @@ Deno.test("Drew SL on screen center", () => {
   ];
   assertEquals(Text, Result);
 });
+Deno.test("Drew SL on screen center Japanese", () => {
+  const backgroundtexts = GetEmptyFullScren(20, 10);
+  const Text = DrewSlScreen({
+    backgroundtexts: backgroundtexts,
+    slText: ["ああああ", "world"],
+    reverse: false,
+  });
+  const Result = [
+    "                    ",
+    "                    ",
+    "                    ",
+    "                    ",
+    "      ああああ      ",
+    "      world         ",
+    "                    ",
+    "                    ",
+    "                    ",
+    "                    ",
+  ];
+  assertEquals(Text, Result);
+});
+Deno.test("Drew SL on 1 freame-ja", () => {
+  const backgroundtexts = GetEmptyFullScren(20, 10);
+  const Text = DrewSlScreen({
+    backgroundtexts: backgroundtexts,
+    slText: ["あああ", "world"],
+    fream: 1,
+    reverse: false,
+  });
+  const Result = [
+    "                    ",
+    "                    ",
+    "                    ",
+    "                    ",
+    "                   あ",
+    "                   w",
+    "                    ",
+    "                    ",
+    "                    ",
+    "                    ",
+  ];
+  assertEquals(Text, Result);
+});
 Deno.test("Drew SL on 1 freame", () => {
   const backgroundtexts = GetEmptyFullScren(20, 10);
   const Text = DrewSlScreen({
