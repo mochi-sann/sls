@@ -1,3 +1,4 @@
+import { stringWidth } from "../../deps.ts";
 type replaceAtPropsType = {
   BaseText: string;
   index: number;
@@ -9,7 +10,9 @@ export const replaceAt = (
   return (
     ((props.BaseText || "").substring(0, props.index) || "") +
     props.replaceText +
-    ((props.BaseText || "").substring(props.index + props.replaceText.length) ||
+    ((props.BaseText || "").substring(
+      props.index + stringWidth(props.replaceText),
+    ) ||
       "")
   );
 };
