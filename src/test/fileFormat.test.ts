@@ -1,6 +1,50 @@
 import { FileFormat } from "../lib/fileFormat.ts";
 import { assertEquals, stringWidth } from "../../deps.ts";
 
+Deno.test("format file names Japanese", () => {
+  const files = [
+    "hello1",
+    "fileeeeeeeeeeeeeeeeeee",
+    "あああああああああああ",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+  ];
+  const Result = [
+    "hello1                 6  ",
+    "fileeeeeeeeeeeeeeeeeee 7  ",
+    "あああああああああああ 8  ",
+    "4                      9  ",
+    "5                      10 ",
+  ];
+  assertEquals(FileFormat({ files: files, MaxRow: 5 }), Result);
+});
+Deno.test("format file names Japanese 2", () => {
+  const files = [
+    "hello1",
+    "ああaaaaa",
+    "ああああa",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+  ];
+  const Result = [
+    "hello1    6  ",
+    "ああaaaaa 7  ",
+    "ああああa 8  ",
+    "4         9  ",
+    "5         10 ",
+  ];
+  assertEquals(FileFormat({ files: files, MaxRow: 5 }), Result);
+});
 Deno.test("format file names 1", () => {
   const files = [
     "hello1",
