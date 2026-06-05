@@ -1,27 +1,22 @@
-const invokeColumnsProcess = () => {
-  return Deno.run({
-    cmd: ["tput", "cols"],
-    stdout: "piped",
-  });
+// ターミナルサイズが取得できない環境(パイプ等)向けのフォールバック値
+const FALLBACK_COLUMNS = 80;
+const FALLBACK_LINES = 24;
+
+const getConsoleSize = (): { columns: number; rows: number } => {
+  try {
+    // tput等のサブプロセスを起動せず、システムコールで直接取得する
+    return Deno.consoleSize();
+  } catch {
+    return { columns: FALLBACK_COLUMNS, rows: FALLBACK_LINES };
+  }
 };
 
-const invokeLinesProcess = () => {
-  return Deno.run({
-    cmd: ["tput", "lines"],
-    stdout: "piped",
-  });
+const getColumns = (): number => {
+  return getConsoleSize().columns;
 };
 
-const getColumns = async (): Promise<number> => {
-  const process = invokeColumnsProcess();
-  const output = new TextDecoder().decode(await process.output());
-  return Number(output);
-};
-
-const getLines = async (): Promise<number> => {
-  const process = invokeLinesProcess();
-  const output = new TextDecoder().decode(await process.output());
-  return Number(output);
+const getLines = (): number => {
+  return getConsoleSize().rows;
 };
 const GetEmptyFullScren = (collums: number, lines: number): string[] => {
   const EmptyFullScren: string[] = Array(lines).fill(" ".repeat(collums));

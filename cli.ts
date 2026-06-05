@@ -23,11 +23,14 @@ const main = async () => {
   let frames: number = 0;
   const Dir: string = args[0] || ".";
   const Dirfiles = await ReadDirFile(Dir);
+  // ファイル一覧はアニメーション中に変化しないのでループ外で一度だけ生成する
+  const files = Dirfiles.map((value) => value.name);
   while (true) {
-    const files = Dirfiles.map((value) => value.name);
+    // ターミナルサイズはリサイズに追従するため毎フレーム取得するが、
+    // サブプロセスを起こさないシステムコールなので軽量
     const Windowsize = {
-      lines: await getLines(),
-      collums: await getColumns(),
+      lines: getLines(),
+      collums: getColumns(),
     };
     const Sl = DreawSLs({
       files: files,

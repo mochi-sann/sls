@@ -5,11 +5,23 @@ type SlAnimationType = {
   slAnimationNumber?: number;
 };
 
+// 貨車(ファイル一覧)はフレームごとに変化しないため、同じfiles配列に対しては
+// 一度計算した結果を再利用してフレームごとの再計算を避ける
+let cachedFilesRef: string[] | null = null;
+let cachedCargo: string[] | null = null;
+const getCargo = (files: string[]): string[] => {
+  if (cachedFilesRef !== files || cachedCargo === null) {
+    cachedFilesRef = files;
+    cachedCargo = CreateWagon({ files });
+  }
+  return cachedCargo;
+};
+
 export const SlAnimation = (props: SlAnimationType): string[] => {
   const SmokeFreameSwitchNumber = 6; // smokeを何フレームごとに切り替えるかの数
   const ReturnValue: string[] = [];
   const CoalWagon: string[] = SlAciiArt.coalWagon;
-  const Cargo = CreateWagon({ files: props.files });
+  const Cargo = getCargo(props.files);
   const SmakeNumber: number = (props.slAnimationNumber || 0) %
     (SlAciiArt.smoke.length * SmokeFreameSwitchNumber);
 
