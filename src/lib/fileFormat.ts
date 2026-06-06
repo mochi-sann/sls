@@ -4,7 +4,8 @@ import { stringWidth } from "../../deps.ts";
 type FileFormatTypes = { files: string[]; MaxRow: number };
 
 export const FileFormat = (props: FileFormatTypes): string[] => {
-  const files = props.files;
+  // 入力配列を破壊しないようにコピーしてからパディングする
+  const files = [...props.files];
   if (files.length < 5) {
     for (let i = files.length; i < 5; i++) {
       files.push(" ");

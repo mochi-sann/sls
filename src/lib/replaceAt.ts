@@ -5,11 +5,11 @@ type replaceAtPropsType = {
 };
 export const replaceAt = (
   props: replaceAtPropsType,
-) => {
+): string => {
+  const base = props.BaseText || "";
   return (
-    ((props.BaseText || "").substring(0, props.index) || "") +
+    base.substring(0, props.index) +
     props.replaceText +
-    ((props.BaseText || "").substring(props.index + props.replaceText.length) ||
-      "")
+    base.substring(props.index + props.replaceText.length)
   );
 };
