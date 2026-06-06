@@ -1,5 +1,5 @@
 import { stringWidth } from "../../deps.ts";
-import { replaceAt } from "./replaceAt.ts";
+import { overlayByWidth } from "./widthString.ts";
 import { ReverseText } from "./reverseText.ts";
 type DrewSlScreenType = {
   backgroundtexts: string[];
@@ -10,10 +10,10 @@ type DrewSlScreenType = {
 
 export const DrewSlScreen = (props: DrewSlScreenType): string[] => {
   const res = props.backgroundtexts;
-  const Fream = props.fream || 0;
   let slText = [...props.slText];
   if (props.reverse) {
-    slText = slText.map((text) => text.split("").reverse().join(""));
+    // コードポイント単位で反転(サロゲートペアを壊さない)
+    slText = slText.map((text) => [...text].reverse().join(""));
     slText = slText.map((text) => {
       return ReverseText(text);
     });
@@ -26,12 +26,6 @@ export const DrewSlScreen = (props: DrewSlScreenType): string[] => {
     height: props.backgroundtexts.length,
     width: stringWidth(props.backgroundtexts[0]),
   };
-  if (backgroundTextSize.width < Fream) {
-    const sliceWidht = Fream - backgroundTextSize.width;
-    slText = slText.map((value) => {
-      return value.slice(sliceWidht);
-    });
-  }
   const backgroundTextMid = {
     lineMid: Math.floor(backgroundTextSize.height / 2),
 
@@ -42,20 +36,10 @@ export const DrewSlScreen = (props: DrewSlScreenType): string[] => {
 
     const X = Math.floor(backgroundTextMid.ClummsMid - slSize.width / 2);
 
-    res[Y] = replaceAt({
-      BaseText: res[Y],
-      replaceText: slText[i],
-      index: props.fream ? backgroundTextSize.width - props.fream : X,
-    });
+    // 表示カラム単位で重ねる。col が負(列の左へはみ出す)場合は overlayByWidth
+    // 側で左を削るため、ここで slText を事前にスライスする必要はない。
+    const col = props.fream ? backgroundTextSize.width - props.fream : X;
+    res[Y] = overlayByWidth(res[Y], slText[i], col);
   }
-  const ReturnValue = res.map((value, key) => {
-    if (
-      stringWidth(value) > backgroundTextSize.width
-    ) {
-      return value.substring(0, backgroundTextSize.width);
-    } else {
-      return value;
-    }
-  });
-  return ReturnValue;
+  return res;
 };
