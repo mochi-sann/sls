@@ -4,10 +4,11 @@ export type SplitArryPropsType = {
 };
 
 const SplitArry = (props: SplitArryPropsType): string[][] => {
-  const arrList = [];
-  const idx = 0;
-  while (idx < props.arry.length) {
-    arrList.push(props.arry.splice(idx, idx + props.dividedOfNumber));
+  const { arry, dividedOfNumber } = props;
+  // 入力配列を破壊せず、dividedOfNumberごとのチャンクに分割する
+  const arrList: string[][] = [];
+  for (let i = 0; i < arry.length; i += dividedOfNumber) {
+    arrList.push(arry.slice(i, i + dividedOfNumber));
   }
   return arrList;
 };
