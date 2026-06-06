@@ -39,11 +39,16 @@ const main = async () => {
 
   // 終了時(正常終了/Ctrl+C)に必ずカーソルを復帰させる
   const restore = () => write(SHOW_CURSOR);
+  // Ctrl+Cでもカーソルを戻して終了する。名前付き関数にして finally で解除する。
+  // (解除しないとリスナーがイベントループを生かし続け、正常終了時にハングする)
+  const onSigint = () => {
+    restore();
+    Deno.exit(130);
+  };
+  let sigintRegistered = false;
   try {
-    Deno.addSignalListener("SIGINT", () => {
-      restore();
-      Deno.exit(130);
-    });
+    Deno.addSignalListener("SIGINT", onSigint);
+    sigintRegistered = true;
   } catch {
     // SIGINT未対応の環境は無視
   }
@@ -81,6 +86,10 @@ const main = async () => {
     }
   } finally {
     restore();
+    // リスナーを解除しないとイベントループが残りプロセスが終了しないため、確実に解除する
+    if (sigintRegistered) {
+      Deno.removeSignalListener("SIGINT", onSigint);
+    }
   }
 };
 main();
