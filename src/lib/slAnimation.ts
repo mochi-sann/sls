@@ -5,13 +5,21 @@ type SlAnimationType = {
   slAnimationNumber?: number;
 };
 
-// 貨車(ファイル一覧)はフレームごとに変化しないため、同じfiles配列に対しては
-// 一度計算した結果を再利用してフレームごとの再計算を避ける
-let cachedFilesRef: string[] | null = null;
+// 貨車(ファイル一覧)はフレームごとに変化しないため、同じ内容のfilesに対しては
+// 一度計算した結果を再利用してフレームごとの再計算を避ける。
+// 参照比較だと「同一参照のまま内容変更」を検出できず、また「同一内容の別参照」で
+// キャッシュが効かないため、ファイル名から生成した内容ベースのキーで判定する。
+// 単純なjoinは ["a","b\nc"] と ["a\nb","c"] のような要素境界の衝突を起こすため、
+// JSON.stringifyで曖昧さなくシリアライズする(CreateWagonに比べ十分軽量)。
+const buildCacheKey = (files: string[]): string => {
+  return JSON.stringify(files);
+};
+let cachedKey: string | null = null;
 let cachedCargo: string[] | null = null;
 const getCargo = (files: string[]): string[] => {
-  if (cachedFilesRef !== files || cachedCargo === null) {
-    cachedFilesRef = files;
+  const key = buildCacheKey(files);
+  if (cachedKey !== key || cachedCargo === null) {
+    cachedKey = key;
     cachedCargo = CreateWagon({ files });
   }
   return cachedCargo;
