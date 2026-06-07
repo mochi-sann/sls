@@ -266,3 +266,71 @@ Deno.test("Drew SL on 25 freame", () => {
   ];
   assertEquals(Text, Result);
 });
+
+Deno.test("全角ファイル名を中央に描画(表示幅が崩れない)", () => {
+  const backgroundtexts = GetEmptyFullScren(20, 10);
+  const Text = DrewSlScreen({
+    backgroundtexts: backgroundtexts,
+    slText: ["あいう"],
+    reverse: false,
+  });
+  const Result = [
+    "                    ",
+    "                    ",
+    "                    ",
+    "                    ",
+    "       あいう       ",
+    "                    ",
+    "                    ",
+    "                    ",
+    "                    ",
+    "                    ",
+  ];
+  assertEquals(Text, Result);
+});
+
+Deno.test("全角ファイル名が右端をまたいでも端末幅を超えない", () => {
+  const backgroundtexts = GetEmptyFullScren(20, 10);
+  const Text = DrewSlScreen({
+    backgroundtexts: backgroundtexts,
+    slText: ["あいう"],
+    fream: 2,
+    reverse: false,
+  });
+  // col=18 に置くと い・う は画面外。あ だけが残り、行幅は20のまま。
+  const Result = [
+    "                    ",
+    "                    ",
+    "                    ",
+    "                    ",
+    "                  あ",
+    "                    ",
+    "                    ",
+    "                    ",
+    "                    ",
+    "                    ",
+  ];
+  assertEquals(Text, Result);
+});
+
+Deno.test("reverse: 全角ファイル名も崩れず反転する", () => {
+  const backgroundtexts = GetEmptyFullScren(20, 10);
+  const Text = DrewSlScreen({
+    backgroundtexts: backgroundtexts,
+    slText: ["あいう"],
+    reverse: true,
+  });
+  const Result = [
+    "                    ",
+    "                    ",
+    "                    ",
+    "                    ",
+    "       ういあ       ",
+    "                    ",
+    "                    ",
+    "                    ",
+    "                    ",
+    "                    ",
+  ];
+  assertEquals(Text, Result);
+});
