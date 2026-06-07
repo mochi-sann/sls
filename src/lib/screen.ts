@@ -9,7 +9,8 @@ type DrewSlScreenType = {
 };
 
 export const DrewSlScreen = (props: DrewSlScreenType): string[] => {
-  const res = props.backgroundtexts;
+  // 呼び出し元の配列を破壊しないようシャローコピーして書き換える
+  const res = [...props.backgroundtexts];
   let slText = [...props.slText];
   if (props.reverse) {
     // コードポイント単位で反転(サロゲートペアを壊さない)
